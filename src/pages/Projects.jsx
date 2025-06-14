@@ -63,9 +63,10 @@ const Projects = () => {
   productIndexes.forEach((idx) => {
     const header = products.find(f => f.FieldName === `PRODUCTS_CARD_${idx}` && f.FieldCode === 'HEADER')?.FieldValue;
     const content = products.find(f => f.FieldName === `PRODUCTS_CARD_${idx}` && f.FieldCode === 'CONTENT')?.FieldValue;
-    const button = products.find(f => f.FieldName === `PRODUCTS_CARD_${idx}` && f.FieldCode === 'BUTTON')?.FieldValue;
-    if (header && content && button) {
-      productGroups.push({ header, content, button });
+    const buttonName = products.find(f => f.FieldName === `PRODUCTS_CARD_${idx}` && f.FieldCode === 'BUTTON_NAME')?.FieldValue;
+    const buttonHref = products.find(f => f.FieldName === `PRODUCTS_CARD_${idx}` && f.FieldCode === 'BUTTON_HREF')?.FieldValue;
+    if (header && content && buttonName && buttonHref) {
+      productGroups.push({ header, content, buttonName, buttonHref });
     }
   });
   // Section titles
@@ -116,13 +117,13 @@ const Projects = () => {
                   <h3 className="project-title" style={{marginBottom: 8}}>{product.header}</h3>
                   <p className="project-description" style={{marginBottom: 12}}>{product.content}</p>
                   <a 
-                    href="https://mervenurkomur.eyyupsert.com" 
+                    href={product.buttonHref}
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="view-invitation-btn"
                     style={{marginTop: 'auto'}}
                   >
-                    {product.button}
+                    {product.buttonName}
                   </a>
                 </div>
               ))
