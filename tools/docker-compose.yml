@@ -4,9 +4,7 @@ services:
   veyltech-app:
     image: veyltech-app:latest
     ports:
-      - "3002:3000"
-    environment:
-      - NODE_ENV=production
+      - "3002:3000"  # Dış:3002 ↔ İç:3000 (artık uyumlu)
     networks:
       - veyltech-network
 
