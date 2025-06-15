@@ -1,21 +1,15 @@
-version: '3'
+version: "3.8"
 
 services:
   veyltech-app:
-    build:
-      context: ..
-      dockerfile: tools/Dockerfile
-    container_name: veyltech-app
-    restart: always
+    image: veyltech-app:latest
     ports:
       - "3002:3000"
     environment:
       - NODE_ENV=production
-    volumes:
-      - ../public:/app/public
     networks:
       - veyltech-network
 
 networks:
   veyltech-network:
-    driver: bridge 
+    driver: overlay
